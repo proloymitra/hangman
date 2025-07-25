@@ -1,1 +1,33 @@
-
+ 
+-
++<!DOCTYPE html>
++<html lang="en">
++<head>
++    <meta charset="UTF-8">
++    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
++    <title>Temple Dash</title>
++    <link rel="stylesheet" href="style.css">
++</head>
++<body>
++    <div id="menu" class="menu">
++        <h1>Temple Dash</h1>
++        <button id="startBtn">Play Game</button>
++        <button id="soundBtn">Sound: On</button>
++        <button id="musicBtn">Music: On</button>
++        <a id="otherBtn" href="https://playinmo.com/" target="_blank">Play Other Games</a>
++        <button id="exitBtn">Exit</button>
++    </div>
++    <div id="hud" class="hud hidden">
++        <span id="score">Score: 0</span>
++        <span id="lives">Lives: 3</span>
++        <button id="pauseBtn">Pause</button>
++    </div>
++    <canvas id="gameCanvas" width="360" height="640"></canvas>
++    <audio id="bgm" src="music.mp3" loop></audio>
++    <audio id="sfx" src="sound.mp3"></audio>
++    <script src="script.js"></script>
++</body>
++</html>
+ 
+EOF
+)
