@@ -115,21 +115,20 @@ function startGame() {
 function nextRound() {
   if (!availableWords.length) availableWords = wordList.slice();
 
-  // reset one-word-attempt
-  resetCanvas();
-  chosenWord = '';
-  maskedWord = [];
-
   // pick a new word
   const idx = Math.floor(Math.random() * availableWords.length);
   const entry = availableWords.splice(idx, 1)[0];
   chosenWord = entry.word;
   maskedWord = Array(chosenWord.length).fill('_');
+
+  // reset canvas and UI
+  resetCanvas();
   hintEl.textContent = `Hint: ${entry.hint}`;
   renderWord();
   renderLetters();
+  updateHUD();
 
-  // reset and start timer
+  // reset & start timer
   clearInterval(timerInterval);
   timeLeft = 90;
   timerEl.textContent = `Time: ${timeLeft}s`;
@@ -143,9 +142,7 @@ function nextRound() {
     }
   }, 1000);
 
-  // play music if enabled
   if (musicEnabled) bgMusic.play();
-  updateHUD();
 }
 
 function updateHUD() {
@@ -174,8 +171,8 @@ function renderLetters() {
   });
 }
 
-// Only reveal letters and update score on correct guess.
-// **No** life deduction or hangman drawing on wrong letters.
+// Reveals letters on correct guess, draws hangman on wrong letters,
+// but only full-word failure deducts one life.
 function handleGuess(letter, btn) {
   if (gamePaused) return;
   btn.disabled = true;
@@ -196,28 +193,27 @@ function handleGuess(letter, btn) {
     if (!maskedWord.includes('_')) onRoundEnd(true);
   } else {
     playSound(wrongSound);
-    // no lives--, no drawNext()
+    drawNext();                // add one hangman stroke
   }
 }
 
-// Called on win or full-word failure (time-out or all letters tried without completing).
+// Called when word is fully guessed (won=true) or time-out/word-fail (won=false)
 function onRoundEnd(won) {
   clearInterval(timerInterval);
 
   if (won) {
     animateWin();
   } else {
-    // reveal correct answer
+    // reveal full word
     maskedWord = chosenWord.split('');
     renderWord();
 
-    // deduct exactly one life for failing this word
+    // deduct one life for the failed word
     lives = Math.max(0, lives - 1);
     updateHUD();
     animateLoss();
   }
 
-  // after a short pause, start next word (or end if out of lives)
   setTimeout(() => {
     if (lives > 0) nextRound();
     else showGameOver();
@@ -225,7 +221,6 @@ function onRoundEnd(won) {
 }
 
 function showGameOver() {
-  // simple game-over handling – you can style this as you like
   wordContainer.textContent = 'Game Over!';
   lettersContainer.innerHTML = '';
   hintEl.textContent = '';
@@ -248,6 +243,25 @@ function resetCanvas() {
   ctx.stroke();
   bodyPartsDrawn = 0;
 }
+
+function drawNext() {
+  bodyPartsDrawn++;
+  ctx.strokeStyle = '#e74c3c';
+  ctx.lineWidth = 4;
+  switch (bodyPartsDrawn) {
+    case 1: drawHead(); break;
+    case 2: drawBody(); break;
+    case 3: drawArm(-1); break;
+    case 4: drawArm(1); break;
+    case 5: drawLeg(-1); break;
+    case 6: drawLeg(1); break;
+  }
+}
+
+function drawHead() { ctx.beginPath(); ctx.arc(200,110,30,0,Math.PI*2); ctx.stroke(); }
+function drawBody() { ctx.beginPath(); ctx.moveTo(200,140); ctx.lineTo(200,220); ctx.stroke(); }
+function drawArm(dir)  { ctx.beginPath(); ctx.moveTo(200,160); ctx.lineTo(200+dir*50,200); ctx.stroke(); }
+function drawLeg(dir)  { ctx.beginPath(); ctx.moveTo(200,220); ctx.lineTo(200+dir*50,270); ctx.stroke(); }
 
 function animateWin() {
   const colors = ['#ff4d4d','#4dff4d','#4d4dff','#ffff4d'];
