@@ -59,13 +59,11 @@ fetch('words.csv')
   .then(res => res.text())
   .then(text => {
     const lines = text.trim().split(/\r?\n/);
-    // assume first line is header: Word,Hint
-    lines.shift();
+    lines.shift(); // remove header
     wordList = lines.map(line => {
       const [w, h] = line.split(',');
       return { word: w.trim().toUpperCase(), hint: h.trim() };
     });
-    console.log('Loaded', wordList.length, 'words');
   })
   .catch(err => {
     console.error('Failed to load words.csv:', err);
@@ -182,9 +180,14 @@ function handleGuess(letter, btn) {
     }
   }
   if (correct) {
-    playSound(correctSound); score += 10; renderWord();
+    playSound(correctSound);
+    score += 10;
+    renderWord();
   } else {
-    playSound(wrongSound); lives--; drawNext(); updateHUD();
+    playSound(wrongSound);
+    lives--;
+    drawNext();
+    updateHUD();
   }
   if (!maskedWord.includes('_')) onRoundEnd(true);
   else if (lives <= 0) onRoundEnd(false);
@@ -192,7 +195,19 @@ function handleGuess(letter, btn) {
 
 function onRoundEnd(won) {
   clearInterval(timerInterval);
-  if (won) animateWin(); else animateLoss();
+  if (won) {
+    animateWin();
+  } else {
+    // Reveal the correct word
+    maskedWord = chosenWord.split('');
+    renderWord();
+    // Deduct one life for failing to guess the word/time-out
+    if (lives > 0) {
+      lives--;
+      updateHUD();
+    }
+    animateLoss();
+  }
   setTimeout(() => nextRound(), 1000);
 }
 
@@ -200,17 +215,23 @@ function onRoundEnd(won) {
 let bodyPartsDrawn = 0;
 function resetCanvas() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = '#333'; ctx.lineWidth = 4;
+  ctx.strokeStyle = '#333';
+  ctx.lineWidth = 4;
   ctx.beginPath();
-  ctx.moveTo(50, 280); ctx.lineTo(350, 280);
-  ctx.moveTo(100, 280); ctx.lineTo(100, 50);
-  ctx.lineTo(200, 50); ctx.lineTo(200, 80);
-  ctx.stroke(); bodyPartsDrawn = 0;
+  ctx.moveTo(50, 280);
+  ctx.lineTo(350, 280);
+  ctx.moveTo(100, 280);
+  ctx.lineTo(100, 50);
+  ctx.lineTo(200, 50);
+  ctx.lineTo(200, 80);
+  ctx.stroke();
+  bodyPartsDrawn = 0;
 }
 
 function drawNext() {
   bodyPartsDrawn++;
-  ctx.strokeStyle = '#e74c3c'; ctx.lineWidth = 4;
+  ctx.strokeStyle = '#e74c3c';
+  ctx.lineWidth = 4;
   switch (bodyPartsDrawn) {
     case 1: drawHead(); break;
     case 2: drawBody(); break;
@@ -220,17 +241,23 @@ function drawNext() {
     case 6: drawLeg(1); break;
   }
 }
+
 function drawHead() { ctx.beginPath(); ctx.arc(200,110,30,0,Math.PI*2); ctx.stroke(); }
 function drawBody() { ctx.beginPath(); ctx.moveTo(200,140); ctx.lineTo(200,220); ctx.stroke(); }
 function drawArm(dir)  { ctx.beginPath(); ctx.moveTo(200,160); ctx.lineTo(200+dir*50,200); ctx.stroke(); }
 function drawLeg(dir)  { ctx.beginPath(); ctx.moveTo(200,220); ctx.lineTo(200+dir*50,270); ctx.stroke(); }
 
 function animateWin() {
-  const colors=['#ff4d4d','#4dff4d','#4d4dff','#ffff4d'];
-  for (let i=0;i<50;i++){
-    const x=Math.random()*canvas.width, y=Math.random()*canvas.height;
-    ctx.fillStyle=colors[Math.floor(Math.random()*colors.length)];
-    ctx.fillRect(x,y,8,8);
+  const colors = ['#ff4d4d','#4dff4d','#4d4dff','#ffff4d'];
+  for (let i = 0; i < 50; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    ctx.fillStyle = colors[Math.floor(Math.random() * colors.length)];
+    ctx.fillRect(x, y, 8, 8);
   }
 }
-function animateLoss(){ ctx.fillStyle='rgba(255,0,0,0.5)'; ctx.fillRect(0,0,canvas.width,canvas.height); }
+
+function animateLoss() {
+  ctx.fillStyle = 'rgba(255,0,0,0.5)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+}
