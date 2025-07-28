@@ -1,19 +1,19 @@
 // script.js
 
 // --- DOM & Canvas Refs ---
-const startBtn        = document.getElementById('start-btn');
-const soundToggleBtn  = document.getElementById('sound-toggle');
-const musicToggleBtn  = document.getElementById('music-toggle');
-const otherGamesBtn   = document.getElementById('other-games-btn');
-const exitBtn         = document.getElementById('exit-btn');
-const menu            = document.getElementById('main-menu');
-const hud             = document.getElementById('hud');
-const hintEl          = document.getElementById('hint');
-const scoreEl         = document.getElementById('score');
-const livesEl         = document.getElementById('lives');
-const pauseBtn        = document.getElementById('pause-btn');
-const wordContainer   = document.getElementById('word-container');
-const lettersContainer= document.getElementById('letters-container');
+const startBtn         = document.getElementById('start-btn');
+const soundToggleBtn   = document.getElementById('sound-toggle');
+const musicToggleBtn   = document.getElementById('music-toggle');
+const otherGamesBtn    = document.getElementById('other-games-btn');
+const exitBtn          = document.getElementById('exit-btn');
+const menu             = document.getElementById('main-menu');
+const hud              = document.getElementById('hud');
+const hintEl           = document.getElementById('hint');
+const scoreEl          = document.getElementById('score');
+const livesEl          = document.getElementById('lives');
+const pauseBtn         = document.getElementById('pause-btn');
+const wordContainer    = document.getElementById('word-container');
+const lettersContainer = document.getElementById('letters-container');
 
 const canvas = document.getElementById('game-canvas');
 const ctx    = canvas.getContext('2d');
@@ -31,7 +31,7 @@ hud.appendChild(timerEl);
 let wordList       = [];
 let availableWords = [];
 let score          = 0;
-let lives          = 5;
+let lives          = 5;       // number of full-word attempts remaining
 let chosenWord     = '';
 let maskedWord     = [];
 let timeLeft       = 0;
@@ -115,10 +115,12 @@ function startGame() {
 function nextRound() {
   if (!availableWords.length) availableWords = wordList.slice();
 
-  lives = 5;
-  updateHUD();
+  // reset one-word-attempt
   resetCanvas();
+  chosenWord = '';
+  maskedWord = [];
 
+  // pick a new word
   const idx = Math.floor(Math.random() * availableWords.length);
   const entry = availableWords.splice(idx, 1)[0];
   chosenWord = entry.word;
@@ -127,6 +129,7 @@ function nextRound() {
   renderWord();
   renderLetters();
 
+  // reset and start timer
   clearInterval(timerInterval);
   timeLeft = 90;
   timerEl.textContent = `Time: ${timeLeft}s`;
@@ -140,7 +143,9 @@ function nextRound() {
     }
   }, 1000);
 
+  // play music if enabled
   if (musicEnabled) bgMusic.play();
+  updateHUD();
 }
 
 function updateHUD() {
@@ -169,9 +174,12 @@ function renderLetters() {
   });
 }
 
+// Only reveal letters and update score on correct guess.
+// **No** life deduction or hangman drawing on wrong letters.
 function handleGuess(letter, btn) {
   if (gamePaused) return;
   btn.disabled = true;
+
   let correct = false;
   for (let i = 0; i < chosenWord.length; i++) {
     if (chosenWord[i] === letter) {
@@ -179,34 +187,49 @@ function handleGuess(letter, btn) {
       correct = true;
     }
   }
+
   if (correct) {
     playSound(correctSound);
     score += 10;
     renderWord();
+    updateHUD();
+    if (!maskedWord.includes('_')) onRoundEnd(true);
   } else {
     playSound(wrongSound);
-    lives--;
-    drawNext();
-    updateHUD();
+    // no lives--, no drawNext()
   }
-  if (!maskedWord.includes('_')) onRoundEnd(true);
-  else if (lives <= 0) onRoundEnd(false);
 }
 
+// Called on win or full-word failure (time-out or all letters tried without completing).
 function onRoundEnd(won) {
   clearInterval(timerInterval);
+
   if (won) {
     animateWin();
   } else {
-    // Reveal the correct word
+    // reveal correct answer
     maskedWord = chosenWord.split('');
     renderWord();
-    // Deduct one life for failing to guess the word or time-out
+
+    // deduct exactly one life for failing this word
     lives = Math.max(0, lives - 1);
     updateHUD();
     animateLoss();
   }
-  setTimeout(() => nextRound(), 1000);
+
+  // after a short pause, start next word (or end if out of lives)
+  setTimeout(() => {
+    if (lives > 0) nextRound();
+    else showGameOver();
+  }, 1000);
+}
+
+function showGameOver() {
+  // simple game-over handling – you can style this as you like
+  wordContainer.textContent = 'Game Over!';
+  lettersContainer.innerHTML = '';
+  hintEl.textContent = '';
+  timerEl.textContent = '';
 }
 
 // --- Canvas & animations ---
@@ -225,25 +248,6 @@ function resetCanvas() {
   ctx.stroke();
   bodyPartsDrawn = 0;
 }
-
-function drawNext() {
-  bodyPartsDrawn++;
-  ctx.strokeStyle = '#e74c3c';
-  ctx.lineWidth = 4;
-  switch (bodyPartsDrawn) {
-    case 1: drawHead(); break;
-    case 2: drawBody(); break;
-    case 3: drawArm(-1); break;
-    case 4: drawArm(1); break;
-    case 5: drawLeg(-1); break;
-    case 6: drawLeg(1); break;
-  }
-}
-
-function drawHead() { ctx.beginPath(); ctx.arc(200,110,30,0,Math.PI*2); ctx.stroke(); }
-function drawBody() { ctx.beginPath(); ctx.moveTo(200,140); ctx.lineTo(200,220); ctx.stroke(); }
-function drawArm(dir)  { ctx.beginPath(); ctx.moveTo(200,160); ctx.lineTo(200+dir*50,200); ctx.stroke(); }
-function drawLeg(dir)  { ctx.beginPath(); ctx.moveTo(200,220); ctx.lineTo(200+dir*50,270); ctx.stroke(); }
 
 function animateWin() {
   const colors = ['#ff4d4d','#4dff4d','#4d4dff','#ffff4d'];
