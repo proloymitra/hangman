@@ -1,33 +1,36 @@
- 
--
-+<!DOCTYPE html>
-+<html lang="en">
-+<head>
-+    <meta charset="UTF-8">
-+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-+    <title>Temple Dash</title>
-+    <link rel="stylesheet" href="style.css">
-+</head>
-+<body>
-+    <div id="menu" class="menu">
-+        <h1>Temple Dash</h1>
-+        <button id="startBtn">Play Game</button>
-+        <button id="soundBtn">Sound: On</button>
-+        <button id="musicBtn">Music: On</button>
-+        <a id="otherBtn" href="https://playinmo.com/" target="_blank">Play Other Games</a>
-+        <button id="exitBtn">Exit</button>
-+    </div>
-+    <div id="hud" class="hud hidden">
-+        <span id="score">Score: 0</span>
-+        <span id="lives">Lives: 3</span>
-+        <button id="pauseBtn">Pause</button>
-+    </div>
-+    <canvas id="gameCanvas" width="360" height="640"></canvas>
-+    <audio id="bgm" src="music.mp3" loop></audio>
-+    <audio id="sfx" src="sound.mp3"></audio>
-+    <script src="script.js"></script>
-+</body>
-+</html>
- 
-EOF
-)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Portrait Hangman Game</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <!-- Main Menu -->
+    <div id="main-menu">
+      <h1>Portrait Hangman</h1>
+      <button id="start-btn">Start Game</button>
+      <button id="sound-toggle">Sound: On</button>
+      <button id="music-toggle">Music: On</button>
+      <button id="other-games-btn">Play Other Games</button>
+      <button id="exit-btn">Exit</button>
+    </div>
+    <!-- Heads-up Display -->
+    <div id="hud" class="hidden">
+      <div id="score">Score: 0</div>
+      <div id="lives">Lives: 6</div>
+      <button id="pause-btn">Pause</button>
+    </div>
+    <!-- Hint Display -->
+    <div id="hint" class="hidden">Hint: </div>
+    <!-- Game Canvas -->
+    <canvas id="game-canvas" class="hidden"></canvas>
+    <!-- Word & Letter Inputs -->
+    <div id="word-container" class="hidden"></div>
+    <div id="letters-container" class="hidden"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

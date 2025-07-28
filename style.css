@@ -1,74 +1,158 @@
- 
--
-+body {
-+    margin: 0;
-+    background: linear-gradient(180deg, #222, #555);
-+    font-family: Arial, sans-serif;
-+    display: flex;
-+    justify-content: center;
-+    align-items: center;
-+    height: 100vh;
-+    overflow: hidden;
-+}
-+
-+.menu {
-+    display: flex;
-+    flex-direction: column;
-+    align-items: center;
-+    gap: 10px;
-+    animation: fadeIn 1s ease-in-out;
-+}
-+
-+.menu h1 {
-+    color: #fff;
-+    margin-bottom: 20px;
-+}
-+
-+.menu button, .menu a, #pauseBtn {
-+    padding: 10px 20px;
-+    font-size: 16px;
-+    border: none;
-+    border-radius: 5px;
-+    background: #ff9800;
-+    color: #fff;
-+    cursor: pointer;
-+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-+    transition: transform 0.2s;
-+}
-+
-+.menu button:hover, .menu a:hover, #pauseBtn:hover {
-+    transform: scale(1.05);
-+}
-+
-+.hidden {
-+    display: none;
-+}
-+
-+#hud {
-+    position: absolute;
-+    top: 10px;
-+    left: 0;
-+    right: 0;
-+    display: flex;
-+    justify-content: space-around;
-+    color: #fff;
-+    z-index: 10;
-+    font-size: 18px;
-+}
-+
-+#gameCanvas {
-+    background: #111;
-+    border: 2px solid #fff;
-+    border-radius: 10px;
-+}
-+
-+@keyframes fadeIn {
-+    from { opacity: 0; }
-+    to { opacity: 1; }
-+}
-+@media (orientation: landscape) {
-+    body { transform: rotate(90deg); height: 100vw; width: 100vh; }
-+}
- 
-EOF
-)
+/* style.css */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #74abe2, #5563de);
+    overflow: hidden;
+  }
+  
+  #game-container {
+    width: 375px;
+    height: 667px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Main Menu */
+  #main-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    animation: fadeIn 1s ease;
+  }
+  
+  #main-menu h1 {
+    margin-bottom: 20px;
+    font-size: 2em;
+    color: #333;
+  }
+  
+  #main-menu button {
+    background: linear-gradient(45deg, #FF6B6B, #FFD93D);
+    border: none;
+    margin: 10px;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: transform 0.2s;
+  }
+  
+  #main-menu button:hover {
+    transform: scale(1.05);
+  }
+  
+  /* HUD */
+  .hidden {
+    display: none !important;
+  }
+  
+  #hud {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+    background: #f1f1f1;
+  }
+  
+  #hud div,
+  #hud button {
+    font-size: 1em;
+  }
+  
+  #hud button {
+    background: none;
+    border: 1px solid #333;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  #hud button:hover {
+    background: #333;
+    color: #fff;
+  }
+  
+  #hint {
+    font-size: 1em;
+    color: #555;
+    margin: 5px;
+    text-align: center;
+  }
+  
+  #game-canvas {
+    background: #e0e0e0;
+    margin: 10px 0;
+    border-radius: 10px;
+  }
+  
+  #word-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+  }
+  
+  #word-container .letter {
+    margin: 0 5px;
+    font-size: 1.5em;
+    border-bottom: 2px solid #333;
+    width: 20px;
+    text-align: center;
+  }
+  
+  #letters-container {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    padding: 10px;
+    max-width: 100%;
+  }
+  
+  .letter-btn {
+    padding: 10px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.1s;
+  }
+  
+  .letter-btn:hover:not(:disabled) {
+    transform: scale(1.1);
+  }
+  
+  .letter-btn:disabled {
+    background: #ccc;
+    cursor: default;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }

@@ -1,139 +1,236 @@
+// script.js
 
-+const canvas = document.getElementById('gameCanvas');
-+const ctx = canvas.getContext('2d');
-+const menu = document.getElementById('menu');
-+const hud = document.getElementById('hud');
-+const startBtn = document.getElementById('startBtn');
-+const soundBtn = document.getElementById('soundBtn');
-+const musicBtn = document.getElementById('musicBtn');
-+const pauseBtn = document.getElementById('pauseBtn');
-+const exitBtn = document.getElementById('exitBtn');
-+const bgm = document.getElementById('bgm');
-+const sfx = document.getElementById('sfx');
- 
-+let soundOn = true;
-+let musicOn = true;
-+let paused = false;
-+let score = 0;
-+let lives = 3;
-+let playerLane = 1; // 0 left,1 center,2 right
-+const laneX = [80, 180, 280];
-+const obstacles = [];
-+let lastTime = 0;
-+
-+function resetGame() {
-+    obstacles.length = 0;
-+    score = 0;
-+    lives = 3;
-+    playerLane = 1;
-+    paused = false;
-+    bgm.currentTime = 0;
-+}
-+
-+function spawnObstacle() {
-+    const lane = Math.floor(Math.random() * 3);
-+    obstacles.push({ lane, y: -40 });
-+}
-+
-+function update(delta) {
-+    if (paused) return;
-+    if (Math.random() < 0.02) spawnObstacle();
-+    for (const o of obstacles) {
-+        o.y += delta * 0.3;
-+    }
-+    while (obstacles.length && obstacles[0].y > canvas.height) {
-+        obstacles.shift();
-+        score++;
-+    }
-+    for (const o of obstacles) {
-+        if (o.lane === playerLane && o.y + 40 > canvas.height - 80 && o.y < canvas.height - 40) {
-+            obstacles.splice(obstacles.indexOf(o),1);
-+            lives--;
-+            if (soundOn) sfx.play();
-+            if (lives <= 0) gameOver();
-+        }
-+    }
-+    hud.querySelector('#score').textContent = `Score: ${score}`;
-+    hud.querySelector('#lives').textContent = `Lives: ${lives}`;
-+}
-+
-+function draw() {
-+    ctx.clearRect(0,0,canvas.width,canvas.height);
-+    ctx.fillStyle = '#222';
-+    ctx.fillRect(0,0,canvas.width,canvas.height);
-+    // lanes
-+    ctx.strokeStyle = '#555';
-+    ctx.lineWidth = 2;
-+    ctx.beginPath();
-+    ctx.moveTo(120,0); ctx.lineTo(120,canvas.height); // left lane line
-+    ctx.moveTo(240,0); ctx.lineTo(240,canvas.height); // right lane line
-+    ctx.stroke();
-+    // player
-+    ctx.fillStyle = '#0f0';
-+    ctx.fillRect(laneX[playerLane]-20, canvas.height-60, 40, 40);
-+    // obstacles
-+    ctx.fillStyle = '#f00';
-+    for (const o of obstacles) {
-+        ctx.fillRect(laneX[o.lane]-20, o.y, 40, 40);
-+    }
-+}
-+
-+function loop(timestamp) {
-+    const delta = timestamp - lastTime;
-+    lastTime = timestamp;
-+    update(delta);
-+    draw();
-+    requestAnimationFrame(loop);
-+}
-+
-+function gameOver() {
-+    paused = true;
-+    alert('Game Over! Your score: ' + score);
-+    menu.classList.remove('hidden');
-+    hud.classList.add('hidden');
-+}
-+
-+startBtn.onclick = () => {
-+    resetGame();
-+    menu.classList.add('hidden');
-+    hud.classList.remove('hidden');
-+    if (musicOn) bgm.play();
-+    requestAnimationFrame(loop);
-+};
-+
-+soundBtn.onclick = () => {
-+    soundOn = !soundOn;
-+    soundBtn.textContent = `Sound: ${soundOn ? 'On' : 'Off'}`;
-+};
-+
-+musicBtn.onclick = () => {
-+    musicOn = !musicOn;
-+    musicBtn.textContent = `Music: ${musicOn ? 'On' : 'Off'}`;
-+    if (!musicOn) bgm.pause();
-+    else if (!bgm.paused) bgm.play();
-+};
-+
-+pauseBtn.onclick = () => {
-+    paused = !paused;
-+    pauseBtn.textContent = paused ? 'Resume' : 'Pause';
-+    if (paused) bgm.pause();
-+    else if (musicOn) bgm.play();
-+};
-+
-+document.addEventListener('keydown', (e) => {
-+    if (e.key === 'ArrowLeft' && playerLane > 0) playerLane--;
-+    if (e.key === 'ArrowRight' && playerLane < 2) playerLane++;
-+});
-+
-+canvas.addEventListener('touchstart', (e) => {
-+    const x = e.touches[0].clientX - canvas.getBoundingClientRect().left;
-+    if (x < canvas.width/2 && playerLane > 0) playerLane--;
-+    else if (x >= canvas.width/2 && playerLane < 2) playerLane++;
-+});
-+
-+exitBtn.onclick = () => {
-+    window.close();
-+};
- 
-EOF
-)
+// --- DOM & Canvas Refs ---
+const startBtn        = document.getElementById('start-btn');
+const soundToggleBtn  = document.getElementById('sound-toggle');
+const musicToggleBtn  = document.getElementById('music-toggle');
+const otherGamesBtn   = document.getElementById('other-games-btn');
+const exitBtn         = document.getElementById('exit-btn');
+const menu            = document.getElementById('main-menu');
+const hud             = document.getElementById('hud');
+const hintEl          = document.getElementById('hint');
+const scoreEl         = document.getElementById('score');
+const livesEl         = document.getElementById('lives');
+const pauseBtn        = document.getElementById('pause-btn');
+const wordContainer   = document.getElementById('word-container');
+const lettersContainer= document.getElementById('letters-container');
+
+const canvas = document.getElementById('game-canvas');
+const ctx    = canvas.getContext('2d');
+canvas.width  = 375;
+canvas.height = 300;
+
+// --- Timer display ---
+const timerEl = document.createElement('div');
+timerEl.id = 'timer';
+timerEl.style.margin = '5px';
+timerEl.style.fontSize = '1em';
+hud.appendChild(timerEl);
+
+// --- Game State ---
+let wordList       = [];
+let availableWords = [];
+let score          = 0;
+let lives          = 5;
+let chosenWord     = '';
+let maskedWord     = [];
+let timeLeft       = 0;
+let timerInterval;
+let gamePaused     = false;
+let soundEnabled   = true;
+let musicEnabled   = true;
+
+// --- Audio ---
+const bgMusic      = new Audio('sounds/background-music.mp3');
+bgMusic.loop       = true;
+const correctSound = new Audio('sounds/correct.mp3');
+const wrongSound   = new Audio('sounds/wrong.mp3');
+
+function playSound(sound) {
+  if (soundEnabled) sound.play();
+}
+
+// --- Initial UI setup ---
+startBtn.disabled    = true;
+startBtn.textContent = 'Loading words...';
+
+// --- Load words from local CSV ---
+fetch('words.csv')
+  .then(res => res.text())
+  .then(text => {
+    const lines = text.trim().split(/\r?\n/);
+    // assume first line is header: Word,Hint
+    lines.shift();
+    wordList = lines.map(line => {
+      const [w, h] = line.split(',');
+      return { word: w.trim().toUpperCase(), hint: h.trim() };
+    });
+    console.log('Loaded', wordList.length, 'words');
+  })
+  .catch(err => {
+    console.error('Failed to load words.csv:', err);
+    wordList = [
+      { word: 'JAVASCRIPT', hint: 'A popular scripting language' },
+      { word: 'CANVAS',     hint: 'HTML5 drawing element'     },
+      { word: 'HANGMAN',    hint: 'Classic word-guessing game'}
+    ];
+  })
+  .finally(() => {
+    availableWords = wordList.slice();
+    startBtn.disabled    = false;
+    startBtn.textContent = 'Start Game';
+  });
+
+// --- Event listeners ---
+startBtn.addEventListener('click', startGame);
+soundToggleBtn.addEventListener('click', () => {
+  soundEnabled = !soundEnabled;
+  soundToggleBtn.textContent = `Sound: ${soundEnabled ? 'On' : 'Off'}`;
+});
+musicToggleBtn.addEventListener('click', () => {
+  musicEnabled = !musicEnabled;
+  musicToggleBtn.textContent = `Music: ${musicEnabled ? 'On' : 'Off'}`;
+  musicEnabled ? bgMusic.play() : bgMusic.pause();
+});
+otherGamesBtn.addEventListener('click', () => window.open('https://playinmo.com/', '_blank'));
+exitBtn.addEventListener('click', () => window.close());
+pauseBtn.addEventListener('click', () => {
+  gamePaused = !gamePaused;
+  pauseBtn.textContent = gamePaused ? 'Resume' : 'Pause';
+  Array.from(lettersContainer.children).forEach(btn => btn.disabled = gamePaused);
+});
+
+// --- Game flow ---
+function startGame() {
+  menu.classList.add('hidden');
+  hud.classList.remove('hidden');
+  hintEl.classList.remove('hidden');
+  canvas.classList.remove('hidden');
+  wordContainer.classList.remove('hidden');
+  lettersContainer.classList.remove('hidden');
+
+  score = 0;
+  availableWords = wordList.slice();
+  nextRound();
+}
+
+function nextRound() {
+  if (!availableWords.length) availableWords = wordList.slice();
+
+  lives = 5;
+  updateHUD();
+  resetCanvas();
+
+  const idx = Math.floor(Math.random() * availableWords.length);
+  const entry = availableWords.splice(idx, 1)[0];
+  chosenWord = entry.word;
+  maskedWord = Array(chosenWord.length).fill('_');
+  hintEl.textContent = `Hint: ${entry.hint}`;
+  renderWord();
+  renderLetters();
+
+  clearInterval(timerInterval);
+  timeLeft = 90;
+  timerEl.textContent = `Time: ${timeLeft}s`;
+  timerInterval = setInterval(() => {
+    if (!gamePaused) {
+      if (--timeLeft <= 0) {
+        clearInterval(timerInterval);
+        onRoundEnd(false);
+      }
+      timerEl.textContent = `Time: ${timeLeft}s`;
+    }
+  }, 1000);
+
+  if (musicEnabled) bgMusic.play();
+}
+
+function updateHUD() {
+  scoreEl.textContent = `Score: ${score}`;
+  livesEl.textContent = `Lives: ${lives}`;
+}
+
+function renderWord() {
+  wordContainer.innerHTML = '';
+  maskedWord.forEach(ch => {
+    const span = document.createElement('span');
+    span.textContent = ch;
+    span.classList.add('letter');
+    wordContainer.appendChild(span);
+  });
+}
+
+function renderLetters() {
+  lettersContainer.innerHTML = '';
+  'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').forEach(letter => {
+    const btn = document.createElement('button');
+    btn.textContent = letter;
+    btn.classList.add('letter-btn');
+    btn.addEventListener('click', () => handleGuess(letter, btn));
+    lettersContainer.appendChild(btn);
+  });
+}
+
+function handleGuess(letter, btn) {
+  if (gamePaused) return;
+  btn.disabled = true;
+  let correct = false;
+  for (let i = 0; i < chosenWord.length; i++) {
+    if (chosenWord[i] === letter) {
+      maskedWord[i] = letter;
+      correct = true;
+    }
+  }
+  if (correct) {
+    playSound(correctSound); score += 10; renderWord();
+  } else {
+    playSound(wrongSound); lives--; drawNext(); updateHUD();
+  }
+  if (!maskedWord.includes('_')) onRoundEnd(true);
+  else if (lives <= 0) onRoundEnd(false);
+}
+
+function onRoundEnd(won) {
+  clearInterval(timerInterval);
+  if (won) animateWin(); else animateLoss();
+  setTimeout(() => nextRound(), 1000);
+}
+
+// --- Canvas & animations ---
+let bodyPartsDrawn = 0;
+function resetCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.strokeStyle = '#333'; ctx.lineWidth = 4;
+  ctx.beginPath();
+  ctx.moveTo(50, 280); ctx.lineTo(350, 280);
+  ctx.moveTo(100, 280); ctx.lineTo(100, 50);
+  ctx.lineTo(200, 50); ctx.lineTo(200, 80);
+  ctx.stroke(); bodyPartsDrawn = 0;
+}
+
+function drawNext() {
+  bodyPartsDrawn++;
+  ctx.strokeStyle = '#e74c3c'; ctx.lineWidth = 4;
+  switch (bodyPartsDrawn) {
+    case 1: drawHead(); break;
+    case 2: drawBody(); break;
+    case 3: drawArm(-1); break;
+    case 4: drawArm(1); break;
+    case 5: drawLeg(-1); break;
+    case 6: drawLeg(1); break;
+  }
+}
+function drawHead() { ctx.beginPath(); ctx.arc(200,110,30,0,Math.PI*2); ctx.stroke(); }
+function drawBody() { ctx.beginPath(); ctx.moveTo(200,140); ctx.lineTo(200,220); ctx.stroke(); }
+function drawArm(dir)  { ctx.beginPath(); ctx.moveTo(200,160); ctx.lineTo(200+dir*50,200); ctx.stroke(); }
+function drawLeg(dir)  { ctx.beginPath(); ctx.moveTo(200,220); ctx.lineTo(200+dir*50,270); ctx.stroke(); }
+
+function animateWin() {
+  const colors=['#ff4d4d','#4dff4d','#4d4dff','#ffff4d'];
+  for (let i=0;i<50;i++){
+    const x=Math.random()*canvas.width, y=Math.random()*canvas.height;
+    ctx.fillStyle=colors[Math.floor(Math.random()*colors.length)];
+    ctx.fillRect(x,y,8,8);
+  }
+}
+function animateLoss(){ ctx.fillStyle='rgba(255,0,0,0.5)'; ctx.fillRect(0,0,canvas.width,canvas.height); }

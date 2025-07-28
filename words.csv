@@ -1,0 +1,602 @@
+Word,Hint
+JAVASCRIPT,A popular scripting language for the web
+CANVAS,HTML5 element for drawing graphics
+HANGMAN,Classic word‑guessing game
+CODING,What programmers spend most of their time doing
+BROWSER,Software you’re using right now to play this game
+COMPUTER,An electronic device for processing data
+INTERNET,Global network connecting computers
+SOFTWARE,Programs and operating information used by a computer
+HARDWARE,The physical components of a computer
+NETWORK,Interconnected group of devices
+DATABASE,Organized collection of data
+ALGORITHM,A step-by-step procedure for calculations
+ENCRYPTION,The process of encoding information
+FIREWALL,A security system that controls network traffic
+PROTOCOL,Rules governing data communication
+ROBOTICS,Technology dealing with robots
+CYBERSECURITY,Protection of systems from digital attacks
+CLOUD,Network of remote servers for storage and processing
+MOBILE,Portable computing device
+AI,Intelligence demonstrated by machines
+LION,Large wild cat known as the king of the jungle
+TIGER,Striped big cat
+ELEPHANT,Large mammal with a trunk
+GIRAFFE,Tallest land animal
+KANGAROO,Australian marsupial with powerful hind legs
+PENGUIN,Flightless bird living mostly in Antarctic
+DOLPHIN,Intelligent marine mammal
+WHALE,Large marine mammal
+SHARK,A predatory fish
+OCTOPUS,Cephalopod with eight arms
+BUTTERFLY,Insect with colorful wings
+SPARROW,Small brown bird
+EAGLE,Bird of prey with keen eyesight
+CROW,Large black bird
+HORSE,Domesticated hoofed mammal
+DONKEY,Domesticated hoofed mammal with long ears
+SNAKE,Legless reptile
+FROG,Amphibian that jumps
+TURTLE,Reptile with a shell
+MONKEY,Primate with long tail
+PIZZA,Flatbread topped with cheese and tomato sauce
+BURGER,Sandwich with a ground meat patty
+SUSHI,Japanese dish of vinegared rice and seafood
+PASTA,Italian dish made from dough
+TACO,Mexican folded tortilla with filling
+CURRY,Spicy dish with sauce and meat or vegetables
+SALAD,Mix of raw or cooked vegetables
+PANCAKE,Flat sweet breakfast cake
+WAFFLE,Grid-patterned fried batter
+CAKE,Sweet baked dessert
+BROWNIE,Chocolate baked square
+ICECREAM,Frozen dairy dessert
+YOGURT,Fermented milk product
+SANDWICH,Two slices of bread with filling
+OMELET,Beaten egg cooked flat and folded
+MOUNTAIN,Large natural elevation of Earth’s surface
+RIVER,Large flowing body of water
+OCEAN,Vast body of salt water
+DESERT,Dry barren area
+FOREST,Large area covered with trees
+VALLEY,Low area between hills
+ISLAND,Land surrounded by water
+PENINSULA,Land almost surrounded by water
+CONTINENT,Major landmass
+VOLCANO,Mountain that erupts lava
+PHYSICS,Study of matter and energy
+CHEMISTRY,Study of substances and reactions
+BIOLOGY,Study of living organisms
+ASTRONOMY,Study of celestial objects
+GEOLOGY,Study of Earth’s crust
+GENETICS,Study of heredity
+ECOLOGY,Study of organisms and their environment
+MICROBIOLOGY,Study of microorganisms
+NEUROSCIENCE,Study of the nervous system
+QUANTUM,Relating to the smallest discrete particle
+THERMODYNAMICS,Study of heat and temperature
+OPTICS,Study of light
+ASTRONAUTICS,Science of space travel
+METEOROLOGY,Study of weather
+PALEONTOLOGY,Study of fossils
+SOCCER,Team sport with a spherical ball
+BASKETBALL,Team sport with a hoop and ball
+TENNIS,Racket sport played on a court
+CRICKET,Bat-and-ball game
+BASEBALL,Bat-and-ball sport with bases
+RUGBY,Contact team sport with an oval ball
+SWIMMING,Sport of moving through water
+CYCLING,Sport of riding bicycles
+BOXING,Combat sport with gloves
+WRESTLING,Grappling combat sport
+GUITAR,Stringed musical instrument
+PIANO,Keyboard instrument
+VIOLIN,Bowed string instrument
+DRUMS,Percussion instrument
+SAXOPHONE,Woodwind instrument
+TRUMPET,Brass wind instrument
+FLUTE,Woodwind instrument
+CELLO,String instrument larger than a violin
+DJ,Person who mixes music
+COMPOSER,Person who writes music
+INCEPTION,Sci-fi thriller directed by Nolan
+TITANIC,Romantic film set on a ship
+AVATAR,Sci-fi film by James Cameron
+GLADIATOR,Epic historical film
+AMELIE,French romantic comedy
+CASABLANCA,Classic romantic drama
+GODFATHER,Mafia crime film
+UP,Animated film about a flying house
+SKYFALL,James Bond spy film
+JOKER,Psychological thriller film
+SHERLOCK,Famous fictional detective
+HAMLET,Shakespearean tragedy
+POETRY,Art form using verse
+NOVEL,Long fictional prose
+BIOGRAPHY,A life story written by another
+ESSAY,Short piece of writing on a subject
+DRAMA,Play intended for performance
+FABLE,Short story with a moral
+MEMOIR,Personal life story
+TRAGEDY,Dramatic genre with a catastrophic ending
+CHAIR,Piece of furniture for seating
+TABLE,Flat-top piece of furniture
+DESK,Table for writing
+LAPTOP,Portable computer
+PHONE,Device for voice communication
+KEYBOARD,Input device for typing
+MUG,Cup for hot drinks
+BOOK,Set of written pages
+PEN,Writing instrument
+GLASSES,Lenses to improve vision
+WATCH,Timepiece worn on wrist
+BACKPACK,Bag carried on back
+UMBRELLA,Handheld rain protection
+PILLOW,Cushioned support for head
+BLANKET,Cover for warmth
+HAPPINESS,Feeling of joy
+SADNESS,Feeling of sorrow
+FEAR,Feeling of fright
+ANGER,Strong displeasure
+SURPRISE,Feeling of astonishment
+DISGUST,Feeling of revulsion
+JOY,Feeling of great happiness
+TRUST,Firm belief in reliability
+ANTICIPATION,Expectation of something
+LOVE,Deep affection
+CAR,Four-wheeled motor vehicle
+BUS,Large road vehicle
+TRAIN,Rail vehicle
+AIRPLANE,Aircraft for air travel
+SHIP,Large sea vessel
+BICYCLE,Two-wheeled pedal vehicle
+MOTORBIKE,Two-wheeled motor vehicle
+SUBWAY,Underground urban train
+TAXI,Hired car for transport
+TRUCK,Large motor vehicle for goods
+RED,Color of blood
+BLUE,Color of the sky
+GREEN,Color of grass
+YELLOW,Color of the sun
+PURPLE,Combination of red and blue
+ORANGE,Color between red and yellow
+PINK,Pale red
+BROWN,Color of wood
+BLACK,Absence of color
+WHITE,All colors combined
+RAIN,Water droplets from clouds
+SNOW,Frozen precipitation
+SUN,Star at center of our solar system
+WIND,Air in motion
+STORM,Violent weather with wind and rain
+HAIL,Ice pellets from storms
+FOG,Thick mist lowering visibility
+RAINBOW,Arc of colored light
+LIGHTNING,Electrical discharge in atmosphere
+LANDSLIDE,Movement of rock or earth
+DOCTOR,Medical professional
+ENGINEER,Builds and designs
+TEACHER,Educator in schools
+LAWYER,Legal professional
+NURSE,Medical caregiver
+ARCHITECT,Designs buildings
+CHEF,Head cook in a kitchen
+PILOT,Flies aircraft
+ARTIST,Creates art
+WRITER,Writes literary works
+MOUSE,Pointing device for computers
+MONITOR,Display screen
+PRINTER,Device to print documents
+ROUTER,Network packet forwarder
+SERVER,Computer providing resources
+CIRCLE,Round plane figure
+SQUARE,Four equal straight sides
+TRIANGLE,Three-sided polygon
+RECTANGLE,Four-sided figure with right angles
+PENTAGON,Five-sided polygon
+BUSINESS,Commercial activity
+MARKETING,Promoting products or services
+MANAGEMENT,Process of dealing with people
+FINANCE,Management of money
+ENTREPRENEUR,Person who starts a business
+HAMMER,Tool with a heavy metal head
+SCREWDRIVER,Tool for turning screws
+WRENCH,Tool for gripping and turning nuts
+PLIERS,Hand tool for gripping
+SAW,Tool for cutting wood
+SMARTPHONE,Electronic device for mobile communication
+TABLET,Portable touchscreen computer
+SMARTWATCH,Wearable smart device on wrist
+PROJECTOR,Device that projects images onto a screen
+SCANNER,Device to scan documents
+MICROPHONE,Device that captures sound
+SPEAKER,Output device for audio
+HEADPHONE,Personal audio listening device
+WEBCAM,Camera for video conferencing
+JOYSTICK,Controller for video games
+DRONE,Unmanned aerial vehicle
+SWITCH,Networking device that connects devices
+MODEM,Device that modulates digital data for transmission
+HUB,Network connection point for devices
+SATELLITE,Artificial body orbiting Earth
+TELESCOPE,Instrument for viewing distant objects
+MICROSCOPE,Instrument for viewing very small objects
+RESISTOR,Electronic component that resists current
+CAPACITOR,Stores electrical energy in an electric field
+TRANSISTOR,Semiconductor device for amplifying signals
+DIODE,Allows current to flow in one direction
+CIRCUIT,Closed path for electric current
+MOTHERBOARD,Main printed circuit board in a computer
+CPU,Central processing unit of a computer
+GPU,Graphics processing unit for rendering images
+RAM,Volatile computer memory for active processes
+ROM,Non-volatile memory for firmware storage
+SSD,Solid state drive for data storage
+HDD,Hard disk drive for magnetic storage
+BIOS,Firmware interface between hardware and OS
+CURSOR,Pointer on a computer screen
+PIXEL,Smallest controllable element of a display
+RESOLUTION,Clarity of an image measured in pixels
+BANDWIDTH,Maximum data transfer rate of a network
+LATENCY,Delay before a transfer of data begins
+PLATEAU,Flat elevated landform
+CANYON,Deep gorge carved by a river
+GLACIER,Slow-moving mass of ice
+GEYSER,Hot spring that intermittently erupts water
+CRATER,Bowl-shaped depression on a surface
+ARCHIPELAGO,Group or chain of islands
+ISTHMUS,Narrow land connecting two larger areas
+DELTA,Landform at the mouth of a river
+BASIN,Low area of land drained by a river
+OASIS,Fertile spot in a desert
+REEF,Underwater ridge of rock or coral
+LAGOON,Shallow body of water separated by barrier
+FJORD,Narrow inlet with steep sides
+TUNDRA,Treeless arctic plain
+SAVANNA,Grassy plain with scattered trees
+RAINFOREST,Dense wet forest with heavy rainfall
+STEPPE,Large area of flat unforested grassland
+MARSH,Wetland dominated by grasses
+SWAMP,Wetland with woody plants
+ESTUARY,Tidal mouth of a large river
+BAGEL,Boiled then baked ring-shaped bread
+CROISSANT,Flaky buttery French pastry
+BURRITO,Wrapped tortilla with filling
+EMPANADA,Filled pastry or turnover
+QUICHE,Savory pie with custard filling
+PIE,Baked dish with sweet or savory filling
+COOKIE,Small sweet baked treat
+MUFFIN,Small domed quick bread
+DONUT,Fried dough confection
+SOUP,Liquid food made by boiling ingredients
+STEW,Thick soup with meat and vegetables
+SPAGHETTI,Long thin pasta strands
+LASAGNA,Layered pasta baked with sauce and cheese
+RISOTTO,Creamy Italian rice dish
+PAELLA,Spanish rice dish with seafood or meat
+RAMEN,Japanese noodle soup
+PHO,Vietnamese noodle soup
+TIRAMISU,Italian dessert with coffee and mascarpone
+PANNACOTTA,Italian cooked cream dessert
+GELATO,Italian style ice cream
+FUDGE,Soft creamy candy
+CARAMEL,Confection made from sugar and butter
+NOUGAT,Confection made with nuts and honey
+CEREAL,Breakfast food made from processed grains
+OATMEAL,Hot porridge made from oats
+GRANOLA,Toasted mixture of oats and nuts
+BANANA,Long curved yellow fruit
+CHERRY,Small round red fruit
+GRAPE,Small round fruit used for wine
+MANGO,Tropical stone fruit with sweet flesh
+PAPAYA,Tropical fruit with orange flesh
+PINEAPPLE,Tropical fruit with spiky exterior
+BLUEBERRY,Small round blue fruit
+STRAWBERRY,Red heart-shaped fruit
+RASPBERRY,Red aggregate fruit
+BLACKBERRY,Dark aggregate fruit
+KIWI,Brown fuzzy fruit with green flesh
+AVOCADO,Green fruit with creamy flesh
+TOMATO,Red or yellow edible fruit
+CARROT,Orange crunchy root vegetable
+POTATO,Starchy tuber vegetable
+ONION,Bulb vegetable with pungent taste
+GARLIC,Pungent bulb used for flavoring
+GINGER,Spicy root used in cooking
+SPINACH,Leafy green vegetable
+LETTUCE,Leafy salad vegetable
+BROCCOLI,Green cruciferous vegetable
+CAULIFLOWER,White cruciferous vegetable
+ZUCCHINI,Green summer squash
+EGGPLANT,Purple vegetable also called aubergine
+CUCUMBER,Green cylindrical vegetable
+CELERY,Crunchy fibrous stalk
+PEPPER,Capsicum vegetable with mild flavor
+CHILI,Spicy pepper used in cooking
+PUMPKIN,Orange winter squash
+CORN,Yellow kernels on a cob
+PEA,Small round green legume
+BEAN,Edible seed of leguminous plant
+LENTIL,Small lens-shaped legume
+ALMOND,Edible tree nut
+WALNUT,Edible two-lobed tree nut
+CASHEW,Edible kidney-shaped nut
+PEANUT,Groundnut legume in a shell
+HAZELNUT,Round edible kernel
+PISTACHIO,Small green edible nut
+SUNFLOWERSEED,Seed from the sunflower plant
+SESAMESEED,Small oilseed used as topping
+RUN,Move at a speed faster than walking
+JUMP,Push oneself off a surface into the air
+FLY,Move through the air
+CRAWL,Move on hands and knees
+WALK,Move at a regular pace by lifting feet
+TALK,Speak in order to convey information
+SPEAK,Express thoughts in spoken words
+LISTEN,Give attention to sound
+WATCH,Look at attentively
+READ,Comprehend written text
+WRITE,Mark letters to form words
+DRAW,Produce a picture with lines
+PAINT,Apply color to a surface
+COOK,Prepare food by heating
+BAKE,Cook food by dry heat in an oven
+DANCE,Move rhythmically to music
+SING,Produce musical tones with voice
+ACT,Perform a role on stage
+DRIVE,Operate and control a vehicle
+SAIL,Navigate a boat using wind
+CLIMB,Go up or ascend
+DIG,Break up and move earth
+BUILD,Construct by putting parts together
+BREAK,Separate into pieces by force
+FIX,Repair something broken
+HEAL,Make healthy again
+CODE,Write instructions for a computer
+DEBUG,Identify and remove errors from code
+COMPILE,Convert code into executable form
+UPLOAD,Transfer data to a remote system
+DOWNLOAD,Transfer data from a remote system
+INSTALL,Place software ready for use
+REMOVE,Take something away
+UPDATE,Make something more current
+RESTART,Start again after stopping
+SHUTDOWN,Turn off power to a device
+BIG,Of considerable size
+SMALL,Of little size
+TALL,Of great height
+SHORT,Measuring a small distance
+LONG,Measuring a great distance
+QUICK,Moving with speed
+SLOW,Moving with little speed
+HEAVY,Of great weight
+LIGHT,Of little weight
+HOT,Having a high temperature
+COLD,Having a low temperature
+WARM,Moderately high temperature
+COOL,Moderately low temperature
+BRIGHT,Full of light
+DARK,With little light
+LOUD,Producing much noise
+QUIET,Making little noise
+SOFT,Easy to mold or compress
+HARD,Resistant to pressure
+SMOOTH,Even surface
+ROUGH,Uneven or coarse surface
+CLEAN,Free from dirt
+DIRTY,Covered with unclean matter
+FRESH,Recently made or obtained
+STALE,No longer fresh
+SWEET,Tasting like sugar
+SOUR,Tasting like acid
+BITTER,Tasting sharp
+SPICY,Having strong flavor of spices
+BLAND,Lacking strong flavor
+WET,Moist with water
+DRY,Free from moisture
+VECTOR,Quantity with magnitude and direction
+MATRIX,Rectangular array of numbers
+DERIVATIVE,Rate of change of a function
+INTEGRAL,Area under a curve in calculus
+EQUATION,Mathematical statement of equality
+FUNCTION,Relation between inputs and outputs
+ACRONYM,Abbreviation formed from initials
+ALTITUDE,Height above sea level
+ATMOSPHERE,Gaseous envelope of a planet
+BAROMETER,Instrument to measure atmospheric pressure
+BIKE,Two-wheeled pedal vehicle
+BLIZZARD,Severe snowstorm with strong winds
+CELEBRITY,Famous person recognized by many
+CELL,Basic unit of living organisms
+COMET,Icy celestial body with a tail
+CONSTELLATION,Group of stars forming a pattern
+COSMOS,The universe seen as a well-ordered whole
+CRESCENT,Shaped like a thin curved moon
+DENSE,Closely compacted in substance
+DIAMETER,Straight line passing through a circle’s center
+DOMINO,Small rectangular tile used in games
+DYNAMITE,Explosive invented by Alfred Nobel
+EMBRYO,Early developmental stage of an organism
+EMPEROR,Sovereign ruler of an empire
+EPOCH,Particular period in history
+EUPHORIA,Intensely happy feeling
+EVOLUTION,Process by which species change over time
+FAUNA,Animal life of a particular region
+FOSSIL,Remains of a prehistoric organism preserved
+GALAXY,Massive system of stars gas and dust
+GENE,Unit of heredity passed down from parents
+GIGABYTE,One billion bytes of digital information
+GRAVITY,Force pulling objects toward each other
+GUARDIAN,Person who protects or defends
+HARBOR,Shelter for ships along the coast
+HARMONY,Pleasant combination of sounds
+HARBINGER,Forerunner indicating what is to come
+HELIX,Spiral shape like a corkscrew
+HIGHWAY,Major public road connecting cities
+HINTERLAND,Remote inland region away from coast
+HORIZON,Line where earth’s surface and sky appear to meet
+HUMIDITY,Amount of moisture in the air
+IDENTITY,Characteristics that define a person
+IGLOO,Dome-shaped Eskimo house made of snow
+IMMUNE,Protected against a disease
+INDICATOR,Something that shows a value or state
+INHABIT,To live or dwell in a place
+INNOVATION,New idea or method introduced
+INSTRUMENT,Tool or device for a particular purpose
+INQUIRY,Seeking information by questioning
+INSECT,Small invertebrate animal with six legs
+JOURNAL,Daily record of events or observations
+JUBILEE,Special anniversary celebration
+KILOMETER,Unit of length equal to 1000 meters
+KINETIC,Relating to or resulting from motion
+LABYRINTH,Complex network of winding passages
+LANDMARK,Identifiable natural or man-made feature
+LANGUAGE,System of words used for communication
+LATITUDE,Distance north or south of the equator
+LAVA,Molten rock expelled by a volcano
+LEGEND,Traditional story sometimes regarded as historical
+LIBRARY,Collection of books for reading or reference
+LITERATURE,Written works of superior or lasting merit
+LUMINOUS,Emitting light or shining brightly
+MAGAZINE,Periodical publication with articles and illustrations
+MAGNET,Material or object that produces a magnetic field
+MALARIA,Disease transmitted by mosquitoes
+MAMMAL,Warm-blooded vertebrate animal with hair
+MASSACHUSETTS,US state known for its colonial history
+MEGAPASCAL,Unit of pressure equal to one million pascals
+METAL,Solid material that is typically hard and shiny
+METEOR,Space debris that burns upon entering Earth’s atmosphere
+MOLECULE,Smallest unit of a chemical compound
+MONOPOLY,Exclusive possession or control of something
+MUSEUM,Building where artifacts are displayed
+MYTHOLOGY,Collection of myths from a culture
+NEBULA,Cloud of gas and dust in space
+NEUTRINO,Subatomic particle with very small mass
+NUCLEUS,Central core of an atom
+NURSERY,Place where young plants or children are cared for
+OCTAGON,Eight-sided polygon
+OBSIDIAN,Volcanic glass formed from lava
+OPAQUE,Not allowing light to pass through
+ORBIT,Curved path of a celestial object
+ORCHESTRA,Large ensemble of musical instruments
+OZONE,Form of oxygen with three atoms per molecule
+PANGOLIN,Scaly anteater mammal
+PARABOLA,U-shaped curve defined by a quadratic function
+PARADIGM,Typical example or pattern of something
+PARAMETER,Limiting factor that defines a system
+PARTICLE,Minute portion of matter
+PASTURE,Land covered with grass for grazing animals
+PATTERN,Repeated decorative design or model
+PAVILION,Large tent or light building used for events
+PERCENTAGE,Portion of 100 as a fraction
+PHENOMENON,Observable fact or event
+PHILOSOPHY,Study of fundamental nature of knowledge
+PHOTOSYNTHESIS,Process by which plants make food using light
+PHYTOPLANKTON,Microscopic marine algae
+PIANIST,Person who plays the piano
+PILGRIMAGE,Journey to a sacred place
+PLAGUE,Contagious bacterial disease
+PLANET,Celestial body orbiting a star
+PLATELET,Small cell fragment in blood aiding clotting
+PLUTOCRACY,Government by the wealthy
+POLARIS,North Star used for navigation
+POLYGON,Plane figure with many straight sides
+PORTAL,Gateway or entrance to a place
+PORTFOLIO,Collection of works or documents
+POTTER,Person who makes pottery
+PREAMBLE,Introductory statement in a constitution
+PRECIPITATION,Any form of water falling from the sky
+PRESTIGE,Widespread respect and admiration
+PRIVACY,State of being free from public attention
+PROBABILITY,Measure of how likely an event is to occur
+PROCESSOR,Computer component that executes instructions
+PROLOGUE,Introductory section of a literary work
+PROTEIN,Essential macromolecule for living cells
+PSYCHOLOGY,Study of mind and behavior
+QUASAR,Extremely luminous active galactic nucleus
+QUOTIENT,Result of division of one quantity by another
+RADIATION,Emission of energy as waves or particles
+RAJASTHAN,Largest Indian state by area
+RAPIDITY,Speed or swiftness of something
+RECEPTION,Act of receiving or welcoming
+RECIPE,Set of instructions for preparing a dish
+REFLECTION,Throwing back of light or sound
+REGULAR,Occurring at uniform intervals
+RELATIVITY,Einstein’s theory about space and time
+RENEWABLE,Capable of being replaced by natural processes
+REPTILE,Cold-blooded vertebrate such as lizards or snakes
+RHYTHM,Pattern of sound or movement
+RIGIDITY,Inability to be bent or changed easily
+RIVERBANK,Land along the edge of a river
+SANDSTONE,Sedimentary rock composed of sand-size grains
+SATURATION,State of being fully soaked or filled
+SCALENE,Triangle with all sides of different lengths
+SCAVENGER,Animal or person that searches through waste
+SCORPION,Arachnid with a venomous tail
+SCRABBLE,Word game using letter tiles on a board
+SEISMIC,Relating to earthquakes or vibrations
+SEMICONDUCTOR,Material with conductivity between a conductor and an insulator
+SERRATED,Having a jagged or tooth-like edge
+SERPENTINE,Winding or twisting like a snake
+SHADOW,Dark shape produced by blocking light
+SHIELD,Protective device used to block attacks
+SIGNATURE,Person’s name written in a distinctive way
+SIMULATION,Imitation of a real-world process
+SKELETON,Internal support structure of vertebrates
+SKYSCRAPER,Very tall multi-story building
+SLOPE,Inclined surface or grade
+SNAPDRAGON,Flower known for dragon-shaped blooms
+SOLARIS,Fictional planet in Stanisław Lem’s novel
+SOLSTICE,Either of the two times of year when days and nights are of unequal length
+SPECTRUM,Range of different frequencies or wavelengths
+SPHINX,Mythical creature with a lion’s body and human head
+SPIRAL,Curve that winds around a central point
+SPLINTER,Thin sharp piece broken off wood
+STATUE,Three-dimensional representation of a person or animal
+STRATOSPHERE,Layer of Earth’s atmosphere above the troposphere
+SUBSCRIPTION,Agreement to receive publications regularly
+SYMBOL,Mark or sign that stands for something else
+SYNTHESIS,Combination to form a connected whole
+TEMPERATURE,Degree of hotness or coldness of a body
+TERRITORY,Land under the jurisdiction of a ruler or state
+THEORY,System of ideas intended to explain something
+THERMAL,Relating to heat
+THESAURUS,Book of synonyms and antonyms
+THUNDER,Sound caused by lightning
+TIMELINE,Graphic representation of events in chronological order
+TIMESTAMP,Marker recording the time of an event
+TOPAZ,Gemstone often yellow or blue
+TORNADO,Violently rotating column of air
+TORQUE,Measure of rotational force
+TOPOGRAPHY,Arrangement of physical features in an area
+TRAJECTORY,Path followed by a projectile
+TRANQUIL,Free from disturbance; calm
+TWEETER,Speaker designed to reproduce high frequencies
+UBIQUITOUS,Present or found everywhere
+UMBILICAL,Relating to or resembling a navel
+UNIFORM,Identical or consistent throughout
+UNIVERSAL,Applicable to all cases
+UTOPIA,Imaginary perfect place or state
+VACUUM,Space entirely devoid of matter
+VALOR,Great courage in the face of danger
+VARIABLE,Element or factor that is liable to vary
+VELOCITY,Speed of something in a given direction
+VENTURE,Risky or daring journey or undertaking
+VENUE,Place where an event is held
+VERDICT,Decision on a disputed issue in a court
+VERTICAL,At right angles to the horizontal plane
+VORTEX,Mass of whirling fluid or air
+WHIRLWIND,Column of air moving rapidly around and around
+XYLOPHONE,Musical instrument made of wooden bars
+YACHT,Medium-sized sailing boat
+ZEBRA,African wild horse with black-and-white stripes
+ZEALOT,Person fanatical about a cause
+ZENITH,Point in the sky directly above an observer
+ZERO,Neither positive nor negative; naught
+ZIGZAG,Pattern created using alternating diagonal lines
+ZOOPLANKTON,Small floating aquatic organisms
+ZYGOTE,Cell formed by the union of two gametes
+CAESAR,Roman general and statesman turned dictator
+FANATIC,Person with excessive zeal
+GALVANIZE,To stimulate as if by electric current
+HALLUCINATION,Perception of something not present
