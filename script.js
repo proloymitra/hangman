@@ -201,11 +201,9 @@ function onRoundEnd(won) {
     // Reveal the correct word
     maskedWord = chosenWord.split('');
     renderWord();
-    // Deduct one life for failing to guess the word/time-out
-    if (lives > 0) {
-      lives--;
-      updateHUD();
-    }
+    // Deduct one life for failing to guess the word or time-out
+    lives = Math.max(0, lives - 1);
+    updateHUD();
     animateLoss();
   }
   setTimeout(() => nextRound(), 1000);
