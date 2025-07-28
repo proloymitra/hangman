@@ -3,34 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Portrait Hangman Game</title>
+  <title>Color Runner</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="game-container">
     <!-- Main Menu -->
-    <div id="main-menu">
-      <h1>Portrait Hangman</h1>
+    <div id="main-menu" class="menu">
+      <h1>Color Runner</h1>
       <button id="start-btn">Start Game</button>
-      <button id="sound-toggle">Sound: On</button>
-      <button id="music-toggle">Music: On</button>
-      <button id="other-games-btn">Play Other Games</button>
+      <button id="sound-btn">Sound: On</button>
+      <button id="music-btn">Music: On</button>
+      <button id="other-games">Play Other Games</button>
       <button id="exit-btn">Exit</button>
     </div>
-    <!-- Heads-up Display -->
+
+    <!-- Heads Up Display -->
     <div id="hud" class="hidden">
       <div id="score">Score: 0</div>
-      <div id="lives">Lives: 6</div>
+      <div id="lives">Lives: 3</div>
       <button id="pause-btn">Pause</button>
     </div>
-    <!-- Hint Display -->
-    <div id="hint" class="hidden">Hint: </div>
+
     <!-- Game Canvas -->
     <canvas id="game-canvas" class="hidden"></canvas>
-    <!-- Word & Letter Inputs -->
-    <div id="word-container" class="hidden"></div>
-    <div id="letters-container" class="hidden"></div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
