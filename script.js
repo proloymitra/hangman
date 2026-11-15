@@ -100,6 +100,7 @@ pauseBtn.addEventListener('click', () => {
 
 // --- Game flow ---
 function startGame() {
+  window.PIM&&window.PIM.start();
   menu.classList.add('hidden');
   hud.classList.remove('hidden');
   hintEl.classList.remove('hidden');
@@ -200,6 +201,7 @@ function handleGuess(letter, btn) {
 // Called when word is fully guessed (won=true) or time-out/word-fail (won=false)
 function onRoundEnd(won) {
   clearInterval(timerInterval);
+  window.PIM&&window.PIM.track('word_end', { success: !!won, score: score });
 
   if (won) {
     animateWin();
@@ -221,6 +223,7 @@ function onRoundEnd(won) {
 }
 
 function showGameOver() {
+  window.PIM&&window.PIM.end({ score: score });
   wordContainer.textContent = 'Game Over!';
   lettersContainer.innerHTML = '';
   hintEl.textContent = '';
