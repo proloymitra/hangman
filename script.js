@@ -32,6 +32,8 @@ let wordList       = [];
 let availableWords = [];
 let score          = 0;
 let lives          = 5;       // number of full-word attempts remaining
+const MAX_WRONG    = 6;       // head, body, two arms, two legs
+let roundOver      = false;   // stops guesses and double round-ends between words
 let chosenWord     = '';
 let maskedWord     = [];
 let timeLeft       = 0;
@@ -121,6 +123,7 @@ function nextRound() {
   const entry = availableWords.splice(idx, 1)[0];
   chosenWord = entry.word;
   maskedWord = Array(chosenWord.length).fill('_');
+  roundOver = false;
 
   // reset canvas and UI
   resetCanvas();
@@ -172,10 +175,10 @@ function renderLetters() {
   });
 }
 
-// Reveals letters on correct guess, draws hangman on wrong letters,
-// but only full-word failure deducts one life.
+// Reveals letters on correct guess, draws hangman on wrong letters.
+// Six wrong letters (a complete figure) or running out of time loses the word and one life.
 function handleGuess(letter, btn) {
-  if (gamePaused) return;
+  if (gamePaused || roundOver) return;
   btn.disabled = true;
 
   let correct = false;
@@ -195,11 +198,14 @@ function handleGuess(letter, btn) {
   } else {
     playSound(wrongSound);
     drawNext();                // add one hangman stroke
+    if (bodyPartsDrawn >= MAX_WRONG) onRoundEnd(false);  // figure complete: word lost
   }
 }
 
 // Called when word is fully guessed (won=true) or time-out/word-fail (won=false)
 function onRoundEnd(won) {
+  if (roundOver) return;
+  roundOver = true;
   clearInterval(timerInterval);
   window.PIM&&window.PIM.track('word_end', { success: !!won, score: score });
 
